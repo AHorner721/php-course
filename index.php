@@ -27,35 +27,33 @@
 
     //Types of loops in PHP = for, while, foreach
     //Loop through products array
-    foreach($products as $key => $value){
-      echo "<p>The ".$key." costs ".$value.".</p>";
+    // foreach($products as $key => $value){
+    //   echo "<p>The ".$key." costs ".$value.".</p>";
+    // }
+
+    //Functions
+    $taxRate=0.0825;
+
+    function tax_calc($amount,$tax){
+      $addedTax= $amount*$tax;
+      $amountWithTax = round($amount+$addedTax,2);
+      return $amountWithTax;
     }
 
+    foreach($products as $key => $value){
+      $costWithTax = tax_calc($value,$taxRate);
+      echo "<p>The ".$key." costs ".$costWithTax." with tax.</p>";
+    }
     //Conditionals
-
     //if statement example
     echo "<h2>Items you can afford</h2>";
 
     foreach($products as $key => $value){
-      if($value <= $credit){
+      $costWithTax = tax_calc($value,$taxRate);
+      if($costWithTax <= $credit){
         echo "<p>".$key."</p>";
       }
     }
-
-    //Functions
-
-    $amount=800;
-    $taxRate=0.0825;
-    $addedTax= $amount*$taxRate;
-    // echo $addedTax;
-
-    function tax_calc($amount,$tax){
-      $calculate_tax = $amount*$tax;
-      $amount = round($amount+$calculate_tax,2);
-      return $amount;
-    }
-
-    echo tax_calc(750,0.223);
     ?>
   </body>
 </html>
