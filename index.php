@@ -8,7 +8,9 @@
     // Using two forward slashes we create comments in php.
     // Within the php tag, we can insert values into our HTML.
     
-    // variable declarations
+    // Variable declarations
+    // Strings assigned using double quotes ""
+    // Numbers are assigned as is
     $name = "PHP Store";
     $credit = 1000;
 
@@ -39,6 +41,21 @@
         echo "<p>".$key."</p>";
       }
     }
+
+    //Functions
+
+    $amount=800;
+    $taxRate=0.0825;
+    $addedTax= $amount*$taxRate;
+    // echo $addedTax;
+
+    function tax_calc($amount,$tax){
+      $calculate_tax = $amount*$tax;
+      $amount = round($amount+$calculate_tax,2);
+      return $amount;
+    }
+
+    echo tax_calc(750,0.223);
     ?>
   </body>
 </html>
